@@ -3,6 +3,7 @@ import './Notifications.css'
 import logo from './close-icon.png'
 import { getLatestNotification } from './utils';
 
+
 export default function Notifications() {
     return(
         <div className='Notifications'>
@@ -14,7 +15,7 @@ export default function Notifications() {
                 right: 20,
             }}
             aria-label='close'>
-                <img src={logo} style={{ width: '0.5rem' }} alt='close-icon'/>
+                <img src={logo} style={{ width: '0.5rem' }} alt='close-icon' />
             </button>
             <p>Here is the list of notifications</p>
             <ul>
