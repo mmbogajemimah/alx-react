@@ -20,6 +20,16 @@
   margin-left: 40px;
 }
 
+.App-body #email {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.App-body #password {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
 p {
   font-size: 19px;
 }
