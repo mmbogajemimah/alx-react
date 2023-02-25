@@ -35,11 +35,11 @@ p {
 }
 
 .App-footer {
-  position: fixed;
-  bottom: 0;
   border-top: 3px solid var(--main);
   width: 100%;
-  font-style: italic;
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 0;
+  font-style: italic;
 }
