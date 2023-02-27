@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.13a42379.css",
-    "main.js": "/static/js/main.24f7cad3.js",
-    "static/js/787.545aecf5.chunk.js": "/static/js/787.545aecf5.chunk.js",
-    "static/media/logo.jpg": "/static/media/logo.24bab5d633e36ca8d17e.jpg",
-    "index.html": "/index.html",
-    "main.13a42379.css.map": "/static/css/main.13a42379.css.map",
-    "main.24f7cad3.js.map": "/static/js/main.24f7cad3.js.map",
-    "787.545aecf5.chunk.js.map": "/static/js/787.545aecf5.chunk.js.map"
+    "main.css": "/alx-react/static/css/main.13a42379.css",
+    "main.js": "/alx-react/static/js/main.cb7a0329.js",
+    "static/js/787.545aecf5.chunk.js": "/alx-react/static/js/787.545aecf5.chunk.js",
+    "static/media/logo.jpg": "/alx-react/static/media/logo.24bab5d633e36ca8d17e.jpg",
+    "index.html": "/alx-react/index.html",
+    "main.13a42379.css.map": "/alx-react/static/css/main.13a42379.css.map",
+    "main.cb7a0329.js.map": "/alx-react/static/js/main.cb7a0329.js.map",
+    "787.545aecf5.chunk.js.map": "/alx-react/static/js/787.545aecf5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.13a42379.css",
-    "static/js/main.24f7cad3.js"
+    "static/js/main.cb7a0329.js"
   ]
 }
