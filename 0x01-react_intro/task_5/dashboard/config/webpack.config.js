@@ -6,8 +6,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
+    performance: {
+        maxAssetSize: 1000000,
+        maxEntrypointSize: 1000000,
+    },
     devServer: {
-        static: path.join(__dirname, 'public'),
+        contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9000,
         hot: true,
@@ -21,7 +25,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif|svg)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -29,23 +33,8 @@ module.exports = {
                     {
                         loader: 'image-webpack-loader',
                         options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65
-                            },
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: [0.65, 0.90],
-                                speed: 4
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            webp: {
-                                quality: 75
-                            }
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
                         },
                     },
                 ],
