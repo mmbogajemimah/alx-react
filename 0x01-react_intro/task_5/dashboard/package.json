@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open"
+    "start": "webpack-dev-server --mode development --config config/webpack.config.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
