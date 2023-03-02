@@ -5,6 +5,7 @@ import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
+import CourseList from '../CourseList/CourseList';
 
 describe('Test App.js', () => {
   it('App without crashing', (done) => {
@@ -37,4 +38,26 @@ describe('Test App.js', () => {
     expect(wrapper.find(Login)).toHaveLength(1);
     expect(wrapper.find(Footer)).toHaveLength(1);
   });
+
+  it('Test to check that CourseLis is not displayed inside App', () => {
+    const wrapper = shallow(<App isLoggedIn={false} />);
+    expect(wrapper.find(CourseList)).toHaveLength(0);
+  });
+
 });
+
+describe('Testing <App isLoggedIn={true} />', () => {
+  // beforeEach(() => {
+  //   const wrapper = shallow(<App isLoggedIn={true}/>);
+  // });
+
+  it("the Login component is not included", () => {
+    const wrapper = shallow(<App isLoggedIn={true}/>);
+    expect(wrapper.find('Login')).toHaveLength(0);
+  });
+
+  it('the CourseList component is included', () => {
+    const wrapper = shallow(<App isLoggedIn={true}/>);
+    expect(wrapper.find('CourseList').exists());
+  })
+})
