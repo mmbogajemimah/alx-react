@@ -1,6 +1,5 @@
 import React from 'react';
-import './Notifications.css'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function NotificationItem({ type, html, value }) {
   return (
@@ -11,17 +10,19 @@ function NotificationItem({ type, html, value }) {
     :
     <li
     data-notification-type={type}
-    dangerouslySetInnerHTML={{ __html: html }}
+    dangerouslySetInnerHTML={html}
     ></li> 
   );
 }
 
+NotificationItem.defaultProps = {
+  type: 'default'
+};
+
 NotificationItem.propTypes = {
-  value: PropTypes.string.isRequired,
+  html: PropTypes.shape({__html: PropTypes.string}),
   type: PropTypes.string.isRequired,
-  html: PropTypes.shape({
-    __html: PropTypes.string.isRequired,
-  }),
+  value: PropTypes.string
 };
 
 export default NotificationItem;

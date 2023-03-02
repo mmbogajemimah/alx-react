@@ -3,14 +3,17 @@ import './Notifications.css';
 import { getLatestNotification } from '../utils/utils';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
+import PropTypes from 'prop-types';
 
 function Notifications({ displayDrawer = false }) {
+  
   return (
     <>
       <div className='menuItem'>
         <p>Your notifications</p>
       </div>
-      <div className="Notifications">
+      { displayDrawer ? 
+        <div className="Notifications">
         <button style={{
           color: '#3a3a3a',
           fontWeight: 'bold',
@@ -34,12 +37,22 @@ function Notifications({ displayDrawer = false }) {
         <ul>
           <NotificationItem type='default' value='New course available' />
           <NotificationItem type='urgent' value='New resume available' />
-          <NotificationItem type='urgent' html={getLatestNotification()} />
+          <NotificationItem type='urgent' html={{__html: getLatestNotification()}} />
         </ul>
       </div>
+    :
+      null
+    }
     </>
-    
   );
 };
+
+Notifications.defaultProps = {
+  displayDrawer: false
+};
+
+Notifications.propType = {
+  displayDrawer: PropTypes.bool,
+}
 
 export default Notifications;
