@@ -1,0 +1,18 @@
+.Notifications {
+	border: 3px dotted var(--holberton-red);
+	padding: 6px 12px;
+	position: relative;
+	margin-top: 12px;
+}
+
+.Notifications li {
+    font-size: 17px;
+}
+
+li[data-notification-type="default"] {
+	color: blue;
+}
+
+li[data-notification-type="urgent"] {
+	color: var(--holberton-red);
+}
