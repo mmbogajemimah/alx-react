@@ -28,23 +28,24 @@ class App extends Component {
       ],
     };
 
-    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.logOut = props.logOut;
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   handleKeyDown(event) {
     event.preventDefault();
     if (event.ctrlKey && event.key === 'h') {
-      console.log(event)
+      //console.log(event)
       alert('Logging you out');
-      this.props.logOut();
+      this.logOut();
     }
   }
 
