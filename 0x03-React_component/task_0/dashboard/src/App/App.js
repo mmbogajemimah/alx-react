@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 //import logo from '../assets/holberton_logo.jpg';
 //import { getFooterCopy, getFullYear } from '../utils/utils';
@@ -10,12 +10,12 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
 import { getLatestNotification } from '../utils/utils';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: props.isLoggedIn,
       listCourses: [
         {id:1, name:'ES6', credit: 60},
         {id:2, name:'Webpack', credit: 20},
@@ -25,7 +25,7 @@ class App extends React.Component {
         {id: 1, value: "New course available", type: "default"},
         {id: 2, value: "New resume available", type: "urgent"},
         {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
-      ]
+      ],
     };
   }
 
