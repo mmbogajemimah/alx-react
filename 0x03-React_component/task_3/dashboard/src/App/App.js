@@ -9,6 +9,8 @@ import Notifications from '../Notifications/Notifications'
 import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
 import { getLatestNotification } from '../utils/utils';
+import BodySectionWithMarginBotom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
 
 class App extends Component {
   constructor(props) {
@@ -58,7 +60,23 @@ class App extends Component {
         <Notifications listNotifications={listNotifications}/>
         <div className='App'>
           <Header />
-          {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+          {
+            isLoggedIn ? 
+            <BodySectionWithMarginBotom title='Course list'>
+              <CourseList listCourses={listCourses} /> 
+            </BodySectionWithMarginBotom>
+            
+            : 
+            <BodySectionWithMarginBotom title='Log in to continue'>
+              <Login />
+            </BodySectionWithMarginBotom>
+            
+          }
+          <BodySection>
+            <BodySectionWithMarginBotom title='News from the School'>
+              <p>This paragraph is about news from the school</p>
+            </BodySectionWithMarginBotom>
+          </BodySection>
           <Footer />
         </div>
       </>
