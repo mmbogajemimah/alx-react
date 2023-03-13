@@ -7,27 +7,26 @@ class NotificationItem extends React.PureComponent {
   }
 
   render() {
-    return(
-      this.props.value ?
+    return (
+      this.props.value ? 
       <li
       data-notification-type={this.props.type}
-      onClick={() => markAsRead(this.props.id)}>
-        {this.props.value}
-      </li>
+      onClick={() => this.props.markAsRead(this.props.id)}
+      >{this.props.value}</li> 
       :
       <li
       data-notification-type={this.props.type}
       dangerouslySetInnerHTML={this.props.html}
-      onClick={() => {console.log('empty func')}}
+      onClick={() => {console.log('empty func');}}
       ></li>
-    )
+    );
   }
 }
 
 NotificationItem.defaultProps = {
   type: 'default',
   markAsRead: () => {console.log('empty func');},
-    id: 0
+	id: 0
 };
 
 NotificationItem.propTypes = {
@@ -35,7 +34,7 @@ NotificationItem.propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.string,
   markAsRead: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.number
 };
 
 export default NotificationItem;

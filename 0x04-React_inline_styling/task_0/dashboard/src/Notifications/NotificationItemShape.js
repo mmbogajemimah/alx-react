@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropType from 'prop-types';
 
-export default PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    html: PropTypes.shape({__html: PropTypes.string})
+export default PropType.shape({
+  id: PropType.number.isRequired,
+  html: PropType.shape({__html: PropType.string}),
+  type: PropType.string.isRequired,
+  value: PropType.string
 });

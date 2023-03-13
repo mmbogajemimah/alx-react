@@ -1,3 +1,7 @@
+:root {
+    --holberton-red: #e1484c;
+}
+
 .App-footer {
     position: absolute;
     bottom: 0;

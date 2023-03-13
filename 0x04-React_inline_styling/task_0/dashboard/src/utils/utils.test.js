@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { getFooterCopy, getFullYear, getLatestNotification } from './utils';
 
 describe("Utils functions", () => {
   
   test("getFullYear returns the correct year", () => {
-    expect(getFullYear()).toEqual(new Date().getFullYear());
+    expect(getFullYear()).toEqual(2022);
   });
 
   test("getFooterCopy returns the correct string when the argument is true", () => {
