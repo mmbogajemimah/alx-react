@@ -1,17 +1,18 @@
 // Converts palin JS objects and arrays to immutable Maps and Lists
 //Import formjs
-const { fromJS } = require('immutable')
-
-let obj1 = {
-    fear: true,
-    smell: -1033575916.9145899,
-    wall: false,
-    thing: -914767132
-}
+import { fromJS } from 'immutable';
 
 function getImmutableObject(object) {
     const obj = fromJS(object)
-    console.log(obj);
+    //console.log(obj);
+    return (obj);
 }
 
-getImmutableObject(obj1);
+// const obj1 = {
+//     fear: true,
+//     smell: -1033575916.9145899,
+//     wall: false,
+//     thing: -914767132
+// }
+
+// getImmutableObject(obj1)
