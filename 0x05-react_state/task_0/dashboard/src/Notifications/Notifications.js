@@ -24,7 +24,7 @@ class Notifications extends Component {
     return (
       <React.Fragment>
         {!this.props.displayDrawer ? (
-          <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer()}>
+          <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
             <p>Your notifications</p>
           </div>
         ) : (
@@ -129,7 +129,7 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
