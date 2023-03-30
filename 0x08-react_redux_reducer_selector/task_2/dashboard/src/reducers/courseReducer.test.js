@@ -7,8 +7,8 @@ describe('Testing courseReducer', () => {
         expect(res).toStrictEqual([]);
     });
 
-    it('Tes that FETCH_COURSE_SUCCESS returns the data passed', () => {
-        const acion = {
+    it('Test that FETCH_COURSE_SUCCESS returns the data passed', () => {
+        const action = {
             type: actions.FETCH_COURSE_SUCCESS,
             data: [
                 {
