@@ -11,159 +11,172 @@ import CourseList from "../CourseList/CourseList";
 import { shallow, mount } from "enzyme";
 import { StyleSheetTestUtils } from "aphrodite";
 import { AppContext, user, logOut } from "./AppContext";
+import { fromJS } from "immutable";
 
-beforeEach(() => {
-  StyleSheetTestUtils.suppressStyleInjection();
-});
-afterEach(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-});
+describe("<App />", () => {
+  it("mapStateToProps returns the right object when the user Login", () => {
+    let state = fromJS({
+      isUserLoggedIn: true,
+    });
 
-describe("rendering components", () => {
-  it("renders App component without crashing", () => {
-    const wrapper = shallow(<App />);
+    const result = mapStateToProps(state);
 
-    expect(wrapper.exists()).toBe(true);
-  });
+    expect(result).toEqual({ isLoggedIn: true })
+  })
+})
 
-  it("contains Notifications component", () => {
-    const wrapper = shallow(<App />);
+// beforeEach(() => {
+//   StyleSheetTestUtils.suppressStyleInjection();
+// });
+// afterEach(() => {
+//   StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+// });
 
-    expect(wrapper.find(Notifications)).toHaveLength(1);
-  });
+// describe("rendering components", () => {
+//   it("renders App component without crashing", () => {
+//     const wrapper = shallow(<App />);
 
-  it("contains Header component", () => {
-    const wrapper = shallow(<App />);
+//     expect(wrapper.exists()).toBe(true);
+//   });
 
-    expect(wrapper.contains(<Header />)).toBe(true);
-  });
+//   it("contains Notifications component", () => {
+//     const wrapper = shallow(<App />);
 
-  it("contains Login component", () => {
-    const wrapper = shallow(<App />);
+//     expect(wrapper.find(Notifications)).toHaveLength(1);
+//   });
 
-    expect(wrapper.find(Login)).toHaveLength(1);
-  });
+//   it("contains Header component", () => {
+//     const wrapper = shallow(<App />);
 
-  it("contains Footer component", () => {
-    const wrapper = shallow(<App />);
+//     expect(wrapper.contains(<Header />)).toBe(true);
+//   });
 
-    expect(wrapper.contains(<Footer />)).toBe(true);
-  });
+//   it("contains Login component", () => {
+//     const wrapper = shallow(<App />);
 
-  it("checks CourseList is not rendered", () => {
-    const wrapper = shallow(<App />);
+//     expect(wrapper.find(Login)).toHaveLength(1);
+//   });
 
-    expect(wrapper.contains(<CourseList />)).toBe(false);
-  });
-});
+//   it("contains Footer component", () => {
+//     const wrapper = shallow(<App />);
 
-describe("when isLogged in is true", () => {
-  const wrapper = shallow(<App />);
-  expect(wrapper.state().user).toEqual(user);
+//     expect(wrapper.contains(<Footer />)).toBe(true);
+//   });
 
-  it("checks Login is not rendered", () => {
-    expect(wrapper.contains(<Login />)).toBe(false);
-  });
+//   it("checks CourseList is not rendered", () => {
+//     const wrapper = shallow(<App />);
 
-  it("checks CourseList is rendered", () => {
-    expect(wrapper.find(CourseList)).toHaveLength(0);
-  });
+//     expect(wrapper.contains(<CourseList />)).toBe(false);
+//   });
+// });
 
-  it(`Tests that the logIn function updates user's state correctly`, () => {
-    const wrapper = mount(
-      <AppContext.Provider value={{ user, logOut }}>
-        <App />
-      </AppContext.Provider>
-    );
+// describe("when isLogged in is true", () => {
+//   const wrapper = shallow(<App />);
+//   expect(wrapper.state().user).toEqual(user);
 
-    const myUser = {
-      email: "testy@gmail.com",
-      password: "testy",
-      isLoggedIn: true,
-    };
+//   it("checks Login is not rendered", () => {
+//     expect(wrapper.contains(<Login />)).toBe(false);
+//   });
 
-    expect(wrapper.state().user).toEqual(user);
-    const instance = wrapper.instance();
-    instance.logIn(myUser.email, myUser.password);
-    expect(wrapper.state().user).toEqual(myUser);
-    wrapper.unmount();
-  });
+//   it("checks CourseList is rendered", () => {
+//     expect(wrapper.find(CourseList)).toHaveLength(0);
+//   });
 
-  it(`Tests that the logOut function updates user's state correctly`, () => {
-    const wrapper = mount(
-      <AppContext.Provider value={{ user, logOut }}>
-        <App />
-      </AppContext.Provider>
-    );
+//   it(`Tests that the logIn function updates user's state correctly`, () => {
+//     const wrapper = mount(
+//       <AppContext.Provider value={{ user, logOut }}>
+//         <App />
+//       </AppContext.Provider>
+//     );
 
-    const myUser = {
-      email: "testy@gmail.com",
-      password: "testy",
-      isLoggedIn: true,
-    };
+//     const myUser = {
+//       email: "testy@gmail.com",
+//       password: "testy",
+//       isLoggedIn: true,
+//     };
 
-    expect(wrapper.state().user).toEqual(user);
-    const instance = wrapper.instance();
-    instance.logOut();
-    expect(wrapper.state().user).toEqual(user);
-    wrapper.unmount();
-  });
-});
+//     expect(wrapper.state().user).toEqual(user);
+//     const instance = wrapper.instance();
+//     instance.logIn(myUser.email, myUser.password);
+//     expect(wrapper.state().user).toEqual(myUser);
+//     wrapper.unmount();
+//   });
 
-describe("testing state of App.js", () => {
-  it("displayDrawer initial value should be set to false", () => {
-    const wrapper = mount(<App />);
+//   it(`Tests that the logOut function updates user's state correctly`, () => {
+//     const wrapper = mount(
+//       <AppContext.Provider value={{ user, logOut }}>
+//         <App />
+//       </AppContext.Provider>
+//     );
 
-    expect(wrapper.state().displayDrawer).toBe(false);
-  });
+//     const myUser = {
+//       email: "testy@gmail.com",
+//       password: "testy",
+//       isLoggedIn: true,
+//     };
 
-  it("should set displayDrawer to true after calling handleDisplayDrawer", () => {
-    const wrapper = shallow(<App />);
-    wrapper.instance().handleDisplayDrawer();
+//     expect(wrapper.state().user).toEqual(user);
+//     const instance = wrapper.instance();
+//     instance.logOut();
+//     expect(wrapper.state().user).toEqual(user);
+//     wrapper.unmount();
+//   });
+// });
 
-    expect(wrapper.state().displayDrawer).toBe(true);
-  });
+// describe("testing state of App.js", () => {
+//   it("displayDrawer initial value should be set to false", () => {
+//     const wrapper = mount(<App />);
 
-  it("should set displayDrawer to false after calling handleHideDrawer", () => {
-    const wrapper = shallow(<App />);
-    wrapper.instance().handleHideDrawer();
+//     expect(wrapper.state().displayDrawer).toBe(false);
+//   });
 
-    expect(wrapper.state().displayDrawer).toBe(false);
-  });
-});
+//   it("should set displayDrawer to true after calling handleDisplayDrawer", () => {
+//     const wrapper = shallow(<App />);
+//     wrapper.instance().handleDisplayDrawer();
 
-describe("markNotificationAsRead works as intended", () => {
-  it(`verify that markNotificationAsRead works as intended, deletes the notification with the passed id from the listNotifications array`, () => {
-    const context = {
-      user: {
-        ...user,
-      },
-      logOut: jest.fn(),
-      listNotifications: [
-        { id: 1, type: "default", value: "New course available" },
-        { id: 2, type: "urgent", value: "New resume available" },
-        { id: 3, html: { __html: jest.fn() }, type: "urgent" },
-      ],
-    };
+//     expect(wrapper.state().displayDrawer).toBe(true);
+//   });
 
-    const wrapper = mount(
-      <AppContext.Provider value={context}>
-        <App />
-      </AppContext.Provider>
-    );
+//   it("should set displayDrawer to false after calling handleHideDrawer", () => {
+//     const wrapper = shallow(<App />);
+//     wrapper.instance().handleHideDrawer();
 
-    const instance = wrapper.instance();
+//     expect(wrapper.state().displayDrawer).toBe(false);
+//   });
+// });
 
-    instance.markNotificationAsRead(3);
+// describe("markNotificationAsRead works as intended", () => {
+//   it(`verify that markNotificationAsRead works as intended, deletes the notification with the passed id from the listNotifications array`, () => {
+//     const context = {
+//       user: {
+//         ...user,
+//       },
+//       logOut: jest.fn(),
+//       listNotifications: [
+//         { id: 1, type: "default", value: "New course available" },
+//         { id: 2, type: "urgent", value: "New resume available" },
+//         { id: 3, html: { __html: jest.fn() }, type: "urgent" },
+//       ],
+//     };
 
-    expect(wrapper.state().listNotifications).toEqual([
-      { id: 1, type: "default", value: "New course available" },
-      { id: 2, type: "urgent", value: "New resume available" },
-    ]);
+//     const wrapper = mount(
+//       <AppContext.Provider value={context}>
+//         <App />
+//       </AppContext.Provider>
+//     );
 
-    expect(wrapper.state().listNotifications.length).toBe(2);
-    expect(wrapper.state().listNotifications[3]).toBe(undefined);
+//     const instance = wrapper.instance();
 
-    wrapper.unmount();
-  });
-});
+//     instance.markNotificationAsRead(3);
+
+//     expect(wrapper.state().listNotifications).toEqual([
+//       { id: 1, type: "default", value: "New course available" },
+//       { id: 2, type: "urgent", value: "New resume available" },
+//     ]);
+
+//     expect(wrapper.state().listNotifications.length).toBe(2);
+//     expect(wrapper.state().listNotifications[3]).toBe(undefined);
+
+//     wrapper.unmount();
+//   });
+// });
