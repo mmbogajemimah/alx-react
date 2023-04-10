@@ -53,13 +53,13 @@ class App extends React.Component {
     }
   }
 
-  handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
-  }
+  // handleDisplayDrawer() {
+  //   this.setState({ displayDrawer: true });
+  // }
 
-  handleHideDrawer() {
-    this.setState({ displayDrawer: false });
-  }
+  // handleHideDrawer() {
+  //   this.setState({ displayDrawer: false });
+  // }
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
