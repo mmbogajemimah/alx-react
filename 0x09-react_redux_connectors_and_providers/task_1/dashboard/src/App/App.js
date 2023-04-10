@@ -12,6 +12,7 @@ import { getLatestNotification } from "../utils/utils";
 import { AppContext, user } from "./AppContext";
 import { uiReducer } from '../reducers/uiReducer';
 import { connect } from 'react-redux';
+import * as uiActionCreators from '../actions/uiActionCreators'
 
 
 class App extends React.Component {
@@ -104,8 +105,8 @@ class App extends React.Component {
                 markNotificationAsRead={this.markNotificationAsRead}
                 listNotifications={this.state.listNotifications}
                 displayDrawer={this.props.displayDrawer}
-                handleDisplayDrawer={this.handleDisplayDrawer}
-                handleHideDrawer={this.handleHideDrawer}
+                handleDisplayDrawer={this.props.handleDisplayDrawer}
+                handleHideDrawer={this.props.handleHideDrawer}
               />
               <Header />
             </div>
@@ -160,6 +161,11 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = {
+  displayNotificationDrawer: uiActionCreators.displayNotificationDrawer,
+  handleDisplayDrawer: uiActionCreators.hideNotificationDrawer
+};
+
 
 //export default App;
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
