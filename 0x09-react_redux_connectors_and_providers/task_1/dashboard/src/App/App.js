@@ -31,9 +31,9 @@ class App extends React.Component {
       ],
     };
 
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
+    // this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    // this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
 
 App.defaultProps = {
   isLoggedIn: false,
+  displayDrawer: false,
   logOut: () => {
     return;
   },
@@ -151,6 +152,7 @@ App.defaultProps = {
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
+  displayDrawer: PropTypes.bool,
   logOut: PropTypes.func,
 };
 
