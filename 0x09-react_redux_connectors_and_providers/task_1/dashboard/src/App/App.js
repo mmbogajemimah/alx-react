@@ -34,8 +34,8 @@ class App extends React.Component {
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     // this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    this.logIn = this.logIn.bind(this);
-    this.logOut = this.logOut.bind(this);
+    // this.logIn = this.logIn.bind(this);
+    // this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
 
@@ -116,7 +116,7 @@ class App extends React.Component {
               </BodySectionWithMarginBottom>
             ) : (
               <BodySectionWithMarginBottom title="Log in to continue">
-                <Login logIn={this.logIn} />
+                <Login logIn={this.props.login} />
               </BodySectionWithMarginBottom>
             )}
             <BodySection title="News from the school">
@@ -165,7 +165,9 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   displayNotificationDrawer: uiActionCreators.displayNotificationDrawer,
-  handleDisplayDrawer: uiActionCreators.hideNotificationDrawer
+  handleDisplayDrawer: uiActionCreators.hideNotificationDrawer,
+  login: uiActionCreators.loginRequest,
+  logout: uiActionCreators.logout,
 };
 
 
