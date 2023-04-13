@@ -29,6 +29,14 @@ export default function uiReducer(state = initialState, action) {
         
         case actions.LOGIN_FAILURE:
             return state.set('isUserLoggedIn', false)
+
+        case actions.LOGIN:
+            return state.set("user", action.user);
+        case actions.LOGOUT:
+            return state.merge({
+                isUserLoggedIn: false,
+                user: null
+            });
         
         default:
             return state
